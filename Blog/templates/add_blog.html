@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+	<!-- //header -->
+	<!-- banner -->
+	<div class="agile-banner">
+	</div>
+	<!-- //banner -->
+	<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="index.html">Home</a></li>
+				<li class="active">Add blog</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+
+	<!-- contact -->
+	<div class="container">
+		{% if error %}
+		<p style="color:red;font-size:20px;"><b>Username already exists</b></p>
+		{% endif %}
+		<!-- mail -->
+	<div class="banner-bottom">
+			<div class="agileits_heading_section">
+				<h3 class="wthree_head">Add Blog</h3>
+
+			</div>
+
+			<div class="w3ls_portfolio_grids w3_agile_mail_grids">
+				<form action="" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="col-md-12 w3_agile_mail_grid">
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<select class="form-control" name="cat" >
+								<option value=""">select category</option>
+								{% for i in allcat %}
+								<option value="{{ i.id }}">{{ i.name }}</option>
+								{% endfor %}
+							</select>
+
+						</span></div>
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="text" id="input-25" placeholder=" " required="" name="title" />
+							<label class="input__label input__label--ichiro" for="input-25">
+								<span class="input__label-content input__label-content--ichiro">Title</span>
+							</label>
+						</span></div>
+
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<textarea name="short" placeholder="short description" required=""></textarea>
+
+
+
+						</span></div>
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<textarea name="long" placeholder="long description" required=""></textarea>
+
+
+						</span></div>
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="file" id="input-26" placeholder=" " required="" name="img" />
+							<label class="input__label input__label--ichiro" for="input-26">
+								<span class="input__label-content input__label-content--ichiro">Image</span>
+							</label>
+						</span></div>
+
+
+
+						<div class="row">
+							<center>
+						<input type="submit" value="Add Blog" style="width: 50%"></center>
+					</div>
+					</div>
+
+					<div class="clearfix"> </div>
+				</form>
+			</div>
+
+	</div>
+<!-- //mail -->
+
+	</div>
+	<!-- //contact -->
+
+{% endblock %}
